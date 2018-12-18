@@ -20,16 +20,19 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        /*
         ivPicture.setOnClickListener(View.OnClickListener {
             //TODO: select image from the phone
                 checkPermission()
-        })
+        })*/
+
+        ivPicture.setOnClickListener { checkPermission() }
     }
 
     val READIMAGE = 123
     fun checkPermission()
     {
-        if(Build.VERSION.SDK_INT > 23)
+        if(Build.VERSION.SDK_INT >= 23)
         {
             if(ActivityCompat.checkSelfPermission(this,
                     android.Manifest.permission.READ_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED)
@@ -37,9 +40,11 @@ class LoginActivity : AppCompatActivity() {
                 requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),READIMAGE)
                 return
             }
+
+            loadImage()
         }
 
-        loadImage()
+
     }
 
 

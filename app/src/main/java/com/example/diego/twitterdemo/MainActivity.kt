@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.add_ticket.view.*
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //data de prueba
         ListTweets.add(Ticket("0", "him", "url", "add"))
         ListTweets.add(Ticket("0", "him", "url", "add"))
         ListTweets.add(Ticket("0", "him", "url", "add"))
@@ -30,10 +31,10 @@ import kotlinx.android.synthetic.main.add_ticket.view.*
     }
 
     inner class  MyTweetAdpater: BaseAdapter {
-        var listNotesAdpater= java.util.ArrayList<Ticket>()
+        var tweetAdapter = ArrayList<Ticket>()
         var context: Context?=null
-        constructor(context: Context, listNotesAdpater: java.util.ArrayList<Ticket>):super(){
-            this.listNotesAdpater=listNotesAdpater
+        constructor(context: Context, tweetAdpater: ArrayList<Ticket>):super(){
+            this.tweetAdapter=tweetAdpater
             this.context=context
         }
 
@@ -41,7 +42,7 @@ import kotlinx.android.synthetic.main.add_ticket.view.*
 
 
 
-            var mytweet=listNotesAdpater[p0]
+            var mytweet=tweetAdapter[p0]
 
             if(mytweet.tweetPersonUID.equals("add")) {
                 var myView = layoutInflater.inflate(R.layout.tweets_ticket, null)
@@ -57,7 +58,7 @@ import kotlinx.android.synthetic.main.add_ticket.view.*
         }
 
         override fun getItem(p0: Int): Any {
-            return listNotesAdpater[p0]
+            return tweetAdapter[p0]
         }
 
         override fun getItemId(p0: Int): Long {
@@ -66,7 +67,7 @@ import kotlinx.android.synthetic.main.add_ticket.view.*
 
         override fun getCount(): Int {
 
-            return listNotesAdpater.size
+            return tweetAdapter.size
 
         }
 
